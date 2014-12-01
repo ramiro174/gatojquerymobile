@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Mobile</title>
+	
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/black-tie/jquery-ui.css">
+	
+	<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+	<script  type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+	<script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+	<script src="https://rawgithub.com/arschmitz/jquery-mobile-datepicker-wrapper/master/jquery.mobile.datepicker.js"></script>
+
+
+
+	<script type="text/javascript" >
+		var r=true;
+
+
+		$(document).ready(function() {
+
+			$.mobile.defaultPageTransition='slide';
+
+			$( ".dtp" ).datepicker();
+
+			$("#Componente_Boton").on("click","#rr", function(){
+
+			})
+
+
+			$("#Juego").on("click",".casilla",function(){
+
+
+				if(r){
+					
+					$(this).html("0");
+					r=false;
+				}else{
+
+					$(this).html("X");
+					r=true;
+
+				}
+			})
+
+
+			$("#Juego").on("click",".acerca",function(){
+
+					$("#Elemento_Ganador").html("X");
+				$.mobile.changePage( "#dialogo1",{transition:"pop"});
+			})
+
+
+
+				$(document).on("pagebeforeshow","#Juego",function(){ // When entering Juego
+				  alert("Juego is about to be shown");
+				});
+				$(document).on("pageshow","#Juego",function(){ // When entering Juego
+				  alert("Juego is now shown");
+				});
+				$(document).on("pagebeforehide","#Juego",function(){ // When leaving Juego
+				  alert("Juego is about to be hidden");
+				});
+				$(document).on("pagehide","#Juego",function(){ // When leaving Juego
+				  alert("Juego is now hidden");
+				});
+
+
+		});
+
+
+
+	</script>
+</head>
+<body>
+
+	<section id="inicio" data-role="page" > 
+	<div data-role="panel" id="pushPanel" data-display="push"></div>
+		<header data-role="header">
+
+		<a href="#" data-role="button" data-icon="home" data-iconpos="left">marcador</a>
+			<h1>Juego del Gato </h1>
+		</header><!-- /header -->
+		<article data-role="content">
+
+			<ul data-role="listview">
+				<li><a href="#Juego">Jugar</a></li>
+			</ul>
+
+		</article><!-- /content -->
+		<footer data-role="footer" data-position="fixed">
+			<h1>Footer</h1>
+		</footer><!-- /footer -->
+	</section><!-- /page -->
+
+
+	<section id="Juego" data-role="page" data-theme="b">
+		<div data-role="panel" id="pizquierdo"></div>
+		<div data-role="panel" id="pderecho" data-position="right"></div>
+
+		<header data-role="header">
+
+		<a href="#pizquierdo" data-role="button" data-icon="home" data-iconpos="left">marcador</a>
+		<a href="#pderecho" data-icon="gear" class="ui-btn-right" >Configuracion</a>
+			<h1>Juego del Gato</h1>
+		</header><!-- /header -->
+		<article data-role="content">
+
+			<div class="ui-grid-b">
+				<div class="ui-block-a"><a href="#"  class="casilla" data-role="button">-</a></div>
+				<div class="ui-block-b"><a href="#"  class="casilla" data-role="button">-</a></div>
+				<div class="ui-block-c"><a href="#"  class="casilla" data-role="button">-</a></div>
+				<div class="ui-block-a"><a href="#"  class="casilla" data-role="button">-</a></div>
+				<div class="ui-block-b"><a href="#"  class="casilla" data-role="button">-</a></div>
+				<div class="ui-block-c"><a href="#"  class="casilla" data-role="button">-</a></div>
+				<div class="ui-block-a"><a href="#"  class="casilla" data-role="button">-</a></div>
+				<div class="ui-block-b"><a href="#"  class="casilla" data-role="button">-</a></div>
+				<div class="ui-block-c"><a href="#"  class="casilla" data-role="button">-</a></div>
+			</div>
+		</article><!-- /content -->
+		<footer data-role="footer" data-position="fixed">
+			
+			<nav data-role="navbar">
+				<ul>
+					<li><a href="#Juego"  data-icon="home">inicio</a>
+					</li>
+					<li><a href="#"  class="acerca" data-icon="home">Accerca de..</a></li>
+
+						<li>	<a data-rel="back" data-icon="back">Back</a>				</li>
+				</ul>
+
+			</nav>
+		</footer><!-- /footer -->
+	</section><!-- /page -->
+
+
+
+<section id="dialogo1" data-role="page" data-dialog="true" data-theme="b">
+	<header data-role="header">
+		<h1>Header</h1>
+	</header><!-- /header -->
+	<article data-role="content">
+		<p>Ganador</p><p id="Elemento_Ganador"></p>
+	</article><!-- /content -->
+	<footer data-role="footer">
+		<h1>Footer</h1>
+	</footer><!-- /footer -->
+</section><!-- /page -->
+
+
+</body>
+</html>
